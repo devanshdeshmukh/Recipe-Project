@@ -12,10 +12,6 @@ const Create = () => {
 
     const SubmitHandler = (recipe) => {
       recipe.id = nanoid();
-      // console.log(recipe);  
-
-      // const copydata = [...data];
-      // copydata.push(recipe);
       setdata([...data, recipe]);
       toast.success("New recipe created!");
       reset();
