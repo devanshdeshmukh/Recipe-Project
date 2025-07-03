@@ -6,9 +6,15 @@ import { toast } from "react-toastify";
 
 
 const SingleRecipe = () => {
-  const navigate = useNavigate();
   const { data, setdata } = useContext(recipecontext);
-  const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
+  const params = useParams();
+  const recipe = data.find((recipe) => params.id == recipe.id);
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues : {
+        title: recipe.title,
+   },
+});  
 
   const SubmitHandler = (recipe) => { 
     const index = data.findIndex((recipe) => params.id == recipe.id);
@@ -19,8 +25,13 @@ const SingleRecipe = () => {
     
   };
 
-  const params = useParams();
-  const recipe = data.find((recipe) => params.id == recipe.id);
+  const DeleteHandler = () => {
+    const filterdata = data.filter((r) => r.id != params.id);
+    setdata(filterdata);
+    toast.success("recipe deleted!")
+    navigate("/recipes")
+    
+  };
 
   return recipe ? (
     <div className="w-full flex">
@@ -44,7 +55,6 @@ const SingleRecipe = () => {
         <input
           className="block border-b outline-0 p-2"
           {...register("title")}
-          value={recipe.title}
           type="text"
           placeholder="Recipe Title"
         />
@@ -52,7 +62,6 @@ const SingleRecipe = () => {
         <input
           className="block border-b outline-0 p-2"
           {...register("chef")}
-          value={recipe.chef}
           type="text"
           placeholder="Chef Name "
         />
@@ -77,7 +86,6 @@ const SingleRecipe = () => {
         </textarea>
 
         <select
-          value={recipe.category}
           className="block border-b outline-0 p-2  text-zinc-400 bg-orange-800 "
           {...register("category")}>
 
@@ -90,7 +98,7 @@ const SingleRecipe = () => {
         <button className="mt-5 block bg-blue-900 px-4 py-2 rounded" >
           Update Recipe
         </button>
-        <button className="mt-5 block bg-red-900 px-4 py-2 rounded" >
+        <button onClick={DeleteHandler} className="mt-5 block bg-red-900 px-4 py-2 rounded" >
           Delete Recipe
         </button>
       </form>
