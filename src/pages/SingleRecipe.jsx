@@ -13,6 +13,11 @@ const SingleRecipe = () => {
   const { register, handleSubmit, reset } = useForm({
     defaultValues : {
         title: recipe.title,
+        chef: recipe.chef,
+        image: recipe.image,
+        inst: recipe.inst,
+        desc: recipe.desc,
+        ingr: recipe.ingr,
    },
 });  
 
@@ -44,7 +49,6 @@ const SingleRecipe = () => {
         <input
           className="block border-b outline-0 p-2"
           {...register("image")}
-          value={recipe.image}
           type="url"
           placeholder="Enter Image url"
         />
