@@ -43,6 +43,8 @@ const SingleRecipe = () => {
       <div className="left w-1/2 p-2">
         <h1 className="text-5xl font-black">{recipe.title}</h1>
         <img className="h-[20vh]" src={recipe.image} alt="" />
+        <h1>{recipe.chef}</h1>
+        <p>{recipe.desc}</p>
       </div>
 
       <form className="w-1/2 p-2" onSubmit={handleSubmit(SubmitHandler)}>
