@@ -92,7 +92,7 @@ const SingleRecipe = () => {
         </textarea>
 
         <select
-          className="block border-b outline-0 p-2  text-zinc-400 bg-orange-800 "
+          className="block border-b outline-0 p-2  text-zinc-400 "
           {...register("category")}>
 
           <option value="breakfast">Breakfast</option>
