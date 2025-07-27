@@ -3,8 +3,8 @@ import axios from "axios";
 const Home = () => {
   const getproduct = async () => {
     try {
-      const { data } = await axios.get("https://fakestoreapi.com/products/1")
-      console.log(data);
+      const response = await axios.get("/products/1");
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
