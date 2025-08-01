@@ -8,7 +8,7 @@ const instance = axios.create({
 //Add a request interceptor
 instance.interceptors.request.use(
     function (config) {
-        console.log("request--->", config);
+        console.log("request --->", config);
         return config;
     },
     function (error){

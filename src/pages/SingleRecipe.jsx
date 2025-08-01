@@ -38,6 +38,13 @@ const SingleRecipe = () => {
     
   };
 
+  // useEffect(() =>{
+  //   console.log("SingleRecipe.jsx Mounted");
+  //   return () =>{
+  //     console.log("SingleRecipe.jsx Unmount");
+  //   };
+  // });
+
   return recipe ? (
     <div className="w-full flex">
       <div className="left w-1/2 p-2">
